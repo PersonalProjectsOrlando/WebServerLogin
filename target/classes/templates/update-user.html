@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:object="${userUpdate}" action="#" th:method="put" th:action="@{/usuario/front/update}" >
+    <h1>Registro de Usuarios</h1>
+    <div>
+        <label for="input_nombre_usuario">Nombre Usuario</label>
+        <input th:field="*{nombreUsuario}" th:value="*{nombreUsuario}" id="input_nombre_usuario" type="text" placeholder="Ingrese Nombre">
+    </div>
+    <div>
+        <label for="input_password">Password</label>
+        <input th:field="*{password}" th:value="*{password}" id="input_password" type="password" placeholder="Ingrese password">
+    </div>
+    <div>
+        <label for="input_nombre_completo">Nombre Completo</label>
+    <input th:field="*{nombre}" th:value="*{nombre}" id="input_nombre_completo" type="text" placeholder="Ingrese Nombre completo">
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ROLES</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="rol : ${ROLES}">
+            <td><input th:field="*{roles}" type="checkbox"  th:text="${rol.name}" th:value="${rol.name}"></td>
+        </tr>
+
+        </tbody>
+
+    </table>
+
+    <button type="submit">Actualizar Usuario</button>
+</form>
+
+</body>
+</html>
